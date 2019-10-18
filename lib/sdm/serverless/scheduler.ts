@@ -19,7 +19,10 @@ export const configuration = configure(async sdm => {
     const dev = new ServerlessDeploy()
         .with({
             deployArgs: { stage: "dev" },
-            registrationName: "serverless-deployer",
+            remoteExecution: {
+                registrationName: "serverless-deployer",
+                stage: "dev",
+            },
         });
 
     return {
