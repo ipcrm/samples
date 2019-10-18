@@ -25,6 +25,16 @@ export const configuration = configure(async sdm => {
                 stage: "dev",
             },
         });
+    // @ts-ignore
+    const test = new ServerlessDeploy()
+        .with({
+            deployArgs: { stage: "test" },
+            remoteExecution: {
+                registrationName: "serverless-deployer",
+                stage: "test",
+            },
+        });
+
 }, {
     postProcessors: [
         async c =>  {
