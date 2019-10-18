@@ -36,8 +36,8 @@ export const configuration = configure(async sdm => {
         serverless: {
             test: IsServerlessDeployable,
             goals: [
-                dev,
                 test,
+                dev,
             ],
         },
     };
