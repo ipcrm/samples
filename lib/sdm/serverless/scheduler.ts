@@ -15,7 +15,9 @@ export const configuration = configure(async sdm => {
     sdm.addExtensionPacks(
         serverlessSupport(),
     );
-    const dev = new ServerlessDeploy()
+    const dev = new ServerlessDeploy({
+        displayName: `Deploy to Dev (Serverless)`,
+    })
         .with({
             deployArgs: { stage: "dev" },
             remoteExecution: {
@@ -23,7 +25,10 @@ export const configuration = configure(async sdm => {
                 stage: "dev",
             },
         });
-    const test = new ServerlessDeploy({approval: true})
+    const test = new ServerlessDeploy({
+        displayName: `Deploy to Test (Serverless)`,
+        approval: true,
+    })
         .with({
             deployArgs: { stage: "test" },
             remoteExecution: {
