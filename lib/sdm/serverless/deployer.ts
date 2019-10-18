@@ -12,7 +12,6 @@ import {serverlessSupport} from "@ipcrm/sdm-pack-serverless/lib/serverless";
  */
 
 export const configuration = configure(async sdm => {
-    sdm.configuration.name = "serverless-deployer";
     sdm.addExtensionPacks(
         serverlessSupport(),
     );
@@ -23,4 +22,11 @@ export const configuration = configure(async sdm => {
             deployArgs: { stage: "dev" },
             registrationName: "serverless-deployer",
         });
+}, {
+    postProcessors: [
+        async c =>  {
+            c.name = "serverless-deployer";
+            return c;
+        },
+    ],
 });
